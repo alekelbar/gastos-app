@@ -2,7 +2,6 @@ import Swal from "sweetalert2";
 import { numberFormat } from "../helpers";
 import { BudgetData } from "../models/budget_data";
 import {
-  CircularProgressbar,
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
