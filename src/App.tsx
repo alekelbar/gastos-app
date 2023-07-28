@@ -185,24 +185,26 @@ function App() {
           </div>
         </div>
         <div className="md:mt-40 mt-52 mx-auto flex flex-col items-center overflow-auto">
-          <div className="mx-auto bg-white p-5 mb-3 md:w-2/3 w-[95%] shadow-xl rounded-xl grid grid-cols-2 grid-row-1">
-            <h3>Filtrar gastos</h3>
-            <select
-              onChange={(e) => setFilter(e.target.value)}
-              className="p-2 border-2 rounded-lg uppercase focus:border-none"
-              name="filtro"
-              id="filtro"
-            >
-              <option value={"all"}>Todos</option>
-              {options.map((e) => {
-                return (
-                  <option value={e} key={e}>
-                    {e}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+          {budgetInput.isValid ?? (
+            <div className="mx-auto bg-white p-5 mb-3 md:w-2/3 w-[95%] shadow-xl rounded-xl grid grid-cols-2 grid-row-1">
+              <h3>Filtrar gastos</h3>
+              <select
+                onChange={(e) => setFilter(e.target.value)}
+                className="p-2 border-2 rounded-lg uppercase focus:border-none"
+                name="filtro"
+                id="filtro"
+              >
+                <option value={"all"}>Todos</option>
+                {options.map((e) => {
+                  return (
+                    <option value={e} key={e}>
+                      {e}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          )}
 
           <h2 className="text-gray-800 font-black text-xl text-center uppercase my-2">
             {worns.filter((e) => (filter !== "all" ? e.type === filter : true))
