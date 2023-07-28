@@ -61,7 +61,6 @@ function App() {
   };
 
   const onCloseModal = () => {
-    setBudgetInput({ ...budgetInput, edit: undefined });
     setOpenModal(false);
   };
 
@@ -77,6 +76,7 @@ function App() {
       ...budgetInput,
       available: budgetInput.available - Number(worn.amount),
       worn: budgetInput.worn + Number(worn.amount),
+      edit: undefined,
     });
   };
 
@@ -98,12 +98,14 @@ function App() {
 
     // reintegrar el presupuesto...
     const newWorn = wornsUpdated.reduce((a, b) => a + Number(b.amount), 0);
-    setBudgetInput({
+    const newState = {
       ...budgetInput,
       worn: newWorn,
       available: Number(budgetInput.budget) - newWorn,
       edit: undefined,
-    });
+    };
+    console.log(newState);
+    setBudgetInput(newState);
   };
 
   const onBudgetChange = (newBudget: BudgetData) => {
